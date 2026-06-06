@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8"/>
+  <title>PathLab Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon">🔬</div>
+    <div>
+      <div class="logo-title">PathLab Pro</div>
+      <div class="logo-sub">Lab Management System</div>
+    </div>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-label">MAIN MENU</div>
+    <a class="nav-item active" data-page="dashboard" onclick="navigate('dashboard')"><span>📊</span> Dashboard</a>
+    <a class="nav-item" data-page="patients" onclick="navigate('patients')"><span>👤</span> Patient Registration</a>
+    <a class="nav-item" data-page="tests" onclick="navigate('tests')"><span>🧪</span> Test Management</a>
+    <a class="nav-item" data-page="billing" onclick="navigate('billing')"><span>💰</span> Billing & Payment</a>
+    <a class="nav-item" data-page="reports" onclick="navigate('reports')"><span>📋</span> Lab Reports</a>
+    <div class="nav-label">MANAGEMENT</div>
+    <a class="nav-item" data-page="doctors" onclick="navigate('doctors')"><span>👨‍⚕️</span> Doctor / Referral</a>
+    <a class="nav-item" data-page="samples" onclick="navigate('samples')"><span>🧫</span> Sample Management</a>
+    <a class="nav-item" data-page="mis" onclick="navigate('mis')"><span>📈</span> MIS Reports</a>
+    <a class="nav-item" data-page="users" onclick="navigate('users')"><span>🔐</span> Users & Roles</a>
+    <div class="nav-label">SYSTEM</div>
+    <a class="nav-item" data-page="settings" onclick="navigate('settings')"><span>⚙️</span> Settings</a>
+    <a class="nav-item" data-page="backup" onclick="navigate('backup')"><span>💾</span> Backup & Restore</a>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="user-badge">
+      <div class="user-avatar" id="user-avatar">A</div>
+      <div>
+        <div class="user-name" id="user-name">Admin</div>
+        <div class="user-role" id="user-role">Super Admin</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<main class="main-content">
+  <header class="topbar">
+    <div class="topbar-left">
+      <div class="page-title" id="page-title">Dashboard</div>
+      <div class="breadcrumb" id="breadcrumb">Home / Dashboard</div>
+    </div>
+    <div class="topbar-right">
+      <div class="topbar-date" id="topbar-date"></div>
+      <div class="topbar-btn" onclick="openNotifications()" title="Notifications">🔔<span class="notif-dot"></span></div>
+      <div class="topbar-btn" onclick="navigate('settings')" title="Settings">⚙️</div>
+    </div>
+  </header>
+  <div class="page-container" id="page-container"></div>
+</main>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal()">
+  <div class="modal-box" id="modal-box" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <div class="modal-title" id="modal-title"></div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
