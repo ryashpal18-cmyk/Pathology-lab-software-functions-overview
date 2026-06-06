@@ -1,0 +1,43 @@
+name: Build PathLab Pro EXE
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build EXE
+        run: npm run build
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload EXE Installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: PathLabPro-Setup-EXE
+          path: dist/*.exe
+          retention-days: 30
+
+      - name: Upload Portable EXE
+        uses: actions/upload-artifact@v4
+        with:
+          name: PathLabPro-Portable-EXE
+          path: dist/*portable*.exe
+          retention-days: 30
